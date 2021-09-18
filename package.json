@@ -1,15 +1,18 @@
 {
-  "private": true,
-  "name": "notshortener",
+  "name": "shortener",
   "version": "1.0.0",
-  "description": "Self-hosted daily stuff",
+  "description": "package for creating workers templates",
   "main": "index.js",
   "scripts": {
     "format": "prettier --write '**/*.{js,css,json,md}'"
   },
   "author": "Manuel Esparza <manoloesparta@gmail.com>",
-  "license": "MIT",
+  "license": "ISC",
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "prettier": "^1.17.0"
+  },
+  "dependencies": {
+    "itty-router": "^2.1.9",
+    "serverless-cloudflare-workers": "^1.2.0"
   }
 }
