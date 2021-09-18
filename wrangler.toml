@@ -1,12 +1,8 @@
-name = "worker"
-type = "javascript"
+name = "notshortener"
+type = "webpack"
 
 account_id = ""
 workers_dev = true
 route = ""
 zone_id = ""
 compatibility_date = "2021-09-17"
-
-kv_namespaces = [
-    { binding = "DAILYS", preview_id = "2b6686092bb0408a978db6a44fa5ef7a" }
-]

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "daily",
+  "name": "notshortener",
   "version": "1.0.0",
   "description": "Self-hosted daily stuff",
   "main": "index.js",
