@@ -1,5 +1,5 @@
 import { Router } from 'itty-router'
-import { makeResponse } from './app/utils'
+import { makeResponse } from './shortener/utils'
 import {
   shortenUrlController,
   imFeelingLuckyController,
@@ -9,7 +9,7 @@ import {
   shortenUserFullUrlController,
   deleteUserShortenedUrlController,
   getFullUrlController,
-} from './app/controllers'
+} from './shortener/controllers'
 
 const router = Router()
 
@@ -22,7 +22,7 @@ router.get('/', () => {
 router.get('/:hash', request => {
   try {
     getFullUrlController(request)
-    return makeResponse('')
+    return makeResponse('', 200)
   } catch {
     return makeResponse('Server interal error', 500)
   }
@@ -31,7 +31,7 @@ router.get('/:hash', request => {
 router.post('/short', request => {
   try {
     shortenUrlController(request)
-    return makeResponse('')
+    return makeResponse('', 200)
   } catch {
     return makeResponse('Server interal error', 500)
   }
@@ -40,54 +40,7 @@ router.post('/short', request => {
 router.get('/lucky', request => {
   try {
     imFeelingLuckyController(request)
-    return makeResponse('')
-  } catch {
-    return makeResponse('Server interal error', 500)
-  }
-})
-
-router.post('/login', request => {
-  try {
-    loginController(request)
-    return makeResponse('')
-  } catch {
-    return makeResponse('Server interal error', 500)
-  }
-})
-
-router.post('/signup', request => {
-  try {
-    signUpController(request)
-    return makeResponse('')
-  } catch {
-    return makeResponse('Server interal error', 500)
-  }
-})
-
-// User specific
-
-router.get('/:user/short', request => {
-  try {
-    shortenUserFullUrlController(request)
-    return makeResponse('')
-  } catch {
-    return makeResponse('Server interal error', 500)
-  }
-})
-
-router.post('/:user/:hash', request => {
-  try {
-    getUserFullUrlController(request)
-    return makeResponse('')
-  } catch {
-    return makeResponse('Server interal error', 500)
-  }
-})
-
-router.delete('/:user/:hash', request => {
-  try {
-    deleteUserShortenedUrlController(request)
-    return makeResponse('')
+    return makeResponse('', 200)
   } catch {
     return makeResponse('Server interal error', 500)
   }

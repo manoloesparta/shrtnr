@@ -8,6 +8,5 @@ zone_id = ""
 compatibility_date = "2021-09-17"
 
 kv_namespaces = [
-    { binding = "USERS", preview_id = "d97d5c0b8c20442f8cfea1a0453e36d6",  id = "927b73f7436e4423a92c483722e4a3db" },
     { binding = "PUBLIC", preview_id = "a2c9c9fbec25420e88ed089475cf2a2c", id = "38f6d9e5689b4b2bb676180c244eb8d0" }
 ]
