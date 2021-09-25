@@ -1,4 +1,4 @@
-name = "shortener"
+name = "shrt"
 type = "webpack"
 
 account_id = ""
@@ -8,5 +8,6 @@ zone_id = ""
 compatibility_date = "2021-09-17"
 
 kv_namespaces = [
-    { binding = "PUBLIC", preview_id = "a2c9c9fbec25420e88ed089475cf2a2c", id = "38f6d9e5689b4b2bb676180c244eb8d0" }
+    { binding = "URL_HASH", id = "76764f1bc8f34899b95d06824985924d", preview_id = "d5e1b5ee6d0745ae989514c950969bf1" },
+    { binding = "HASH_URL", id = "ec9e7a353a6647dc9ade22099d8ffa43", preview_id = "a9acadc08b284cbc946090a7bdc1a6b7" }
 ]

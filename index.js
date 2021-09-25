@@ -1,39 +1,35 @@
 import { Router } from 'itty-router'
-import { makeResponse } from './shortener/utils'
+import { makeResponse } from './shrtnr/utils'
 import {
-  shortenUrlController,
   imFeelingLuckyController,
-  loginController,
-  signUpController,
-  getUserFullUrlController,
-  shortenUserFullUrlController,
-  deleteUserShortenedUrlController,
   getFullUrlController,
-} from './shortener/controllers'
+  createShortenUrlController,
+} from './shrtnr/controllers'
 
 const router = Router()
 
-// Public
-
 router.get('/', () => {
-  return makeResponse('Hello there', 200)
+  const res = JSON.stringify({ message: 'hello there' })
+  return makeResponse(res, 200)
 })
 
 router.get('/:hash', request => {
   try {
     getFullUrlController(request)
     return makeResponse('', 200)
-  } catch {
-    return makeResponse('Server interal error', 500)
+  } catch (err) {
+    console.error(err, err.stack)
+    return makeResponse(' interal error', 500)
   }
 })
 
 router.post('/short', request => {
   try {
-    shortenUrlController(request)
-    return makeResponse('', 200)
-  } catch {
-    return makeResponse('Server interal error', 500)
+    const res = createShortenUrlController(request)
+    return makeResponse(res, 200)
+  } catch (err) {
+    console.error(err, err.stack)
+    return makeResponse('Internal server error', 500)
   }
 })
 
@@ -41,12 +37,11 @@ router.get('/lucky', request => {
   try {
     imFeelingLuckyController(request)
     return makeResponse('', 200)
-  } catch {
-    return makeResponse('Server interal error', 500)
+  } catch (err) {
+    console.error(err, err.stack)
+    return makeResponse('Internal server error', 500)
   }
 })
-
-// Config
 
 router.all('*', () => makeResponse('Method not allowed', 405))
 
