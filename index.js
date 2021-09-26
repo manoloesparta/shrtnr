@@ -1,11 +1,14 @@
 import { Router } from 'itty-router'
-import { makeResponse, endpointHandler } from './shrtnr/utils'
+import { 
+  makeResponse, 
+  endpointHandler,
+  notFoundWebsite 
+} from './shrtnr/utils'
 import {
   imFeelingLuckyController,
   getFullUrlController,
   createShortenUrlController,
 } from './shrtnr/controllers'
-import { KVHandler } from './shrtnr/handlers'
 
 const router = Router()
 
@@ -14,23 +17,24 @@ router.get('/', () => {
   return makeResponse(res, 200)
 })
 
-router.get('/:hash', request => {
-  return endpointHandler(getFullUrlController, request)
+router.get('/null', request => {
+  return makeResponse(notFoundWebsite, 200, 'text/html')
+})
+
+router.get('/lucky', async request => {
+  return endpointHandler(imFeelingLuckyController, request)
+})
+
+router.get('/:hash', async request => {
+  return endpointHandler(getFullUrlController, request, 'text/html')
 })
 
 router.post('/short', async request => {
-  let h = new KVHandler(URL_HASH);
-  let b = h.get("a.com");
-  console.log(b)
   return endpointHandler(createShortenUrlController, await request.json())
-})
-
-router.get('/lucky', request => {
-  return endpointHandler(imFeelingLuckyController, request)
 })
 
 router.all('*', () => makeResponse('Method not allowed', 405))
 
 addEventListener('fetch', async e => {
-  e.respondWith(router.handle(e.request));
+  e.respondWith(router.handle(e.request))
 })

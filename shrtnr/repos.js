@@ -5,18 +5,18 @@ export class UrlsRepo {
     this.handler = handler
   }
 
-  saveUrl(shrt) {
+  async saveUrl(shrt) {
     const { url, hash } = shrt
-    this.handler.set(url, hash)
+    await this.handler.set(url, hash)
   }
 
-  getHash(url) {
-    const hash = this.handler.get(url)
+  async getHash(url) {
+    const hash = await this.handler.get(url)
     return Short.withHash(url, hash)
   }
 
-  isUrlRegistered(url) {
-    const res = this.handler.get(url)
+  async isUrlRegistered(url) {
+    const res = await this.handler.get(url)
     return res !== null
   }
 }
@@ -26,28 +26,29 @@ export class HashRepo {
     this.handler = handler
   }
 
-  saveHash(shrt) {
+  async saveHash(shrt) {
     const { url, hash } = shrt
-    this.handler.set(hash, url)
+    await this.handler.set(hash, url)
   }
 
-  getUrl(hash) {
-    const url = this.handler.get(hash)
-    return Short.withHash(url, hash)
+  async getUrl(hash) {
+    const url = await this.handler.get(hash)
+    return Short.withHash(await url, hash)
   }
 
-  isHashRegistered(hash) {
-    const res = this.handler.get(hash)
+  async isHashRegistered(hash) {
+    const res = await this.handler.get(hash)
     return res !== null
   }
 
-  getHashByIndex(index) {
-    const all = this.handler.keys()
-    const realIndex = index % all.length
-    return all[realIndex]
+  async getHashByIndex(index) {
+    const all = await this.handler.keys()
+    const specific = await all[index]
+    return specific.name
   }
 
-  hashesCount() {
-    return this.handler.keys().length
+  async hashesCount() {
+    const keys = await this.handler.keys()
+    return keys.length
   }
 }

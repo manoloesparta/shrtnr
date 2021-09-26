@@ -24,4 +24,8 @@ export class Short {
       hash: this.hash,
     })
   }
+
+  toRedirectHtml() {
+    return `<meta http-equiv="refresh" content="0; url=${this.url}" />`
+  }
 }
