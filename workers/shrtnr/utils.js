@@ -30,6 +30,3 @@ export function randomInt(max) {
 export const notFoundWebsite = `
 <h1>Shortened link not found</h1>
 `
-export function createRedirectHtml(url) {
-  return `<meta http-equiv="refresh" content="0; url=${url}" />`
-}

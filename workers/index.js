@@ -1,9 +1,5 @@
 import { Router } from 'itty-router'
-import { 
-  makeResponse, 
-  endpointHandler,
-  notFoundWebsite 
-} from './shrtnr/utils'
+import { makeResponse, endpointHandler, notFoundWebsite } from './shrtnr/utils'
 import {
   imFeelingLuckyController,
   getFullUrlController,
