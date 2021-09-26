@@ -1,18 +1,20 @@
 export class KVHandler {
-  constructor(kv) {
-    this.kv = kv
+  constructor(namespace) {
+    this.namespace = namespace
   }
 
   async set(key, jason) {
-    await this.kv.put(key, jason)
+    const res = await this.namespace.put(key, jason)
+    return res
   }
 
   async get(key) {
-    return await this.kv.get(key)
+    const res = await this.namespace.get(key)
+    return res
   }
 
   async keys() {
-    const everything = await this.kv.list()
+    const everything = await this.namespace.list()
     return everything.keys
   }
 }

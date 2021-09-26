@@ -6,9 +6,15 @@ export class Short {
     this.hash = this.generateHash()
   }
 
+  static withHash(url, hash) {
+    const shrt = new Short(url)
+    shrt.hash = hash
+    return shrt
+  }
+
   generateHash() {
     const SHA1 = new Hashes.SHA1()
-    const hash = SHA1.hex(this.url)
+    const hash = SHA1.hex(this.url + Date.now())
     return hash.substring(0, 7)
   }
 

@@ -1,29 +1,53 @@
-class UrlsRepo {
+import { Short } from './models'
+
+export class UrlsRepo {
   constructor(handler) {
     this.handler = handler
   }
 
-  saveUrl(url) {
-    const { link, hash } = url
-    this.handler.set(link, hash)
+  saveUrl(shrt) {
+    const { url, hash } = shrt
+    this.handler.set(url, hash)
   }
 
-  getHash(link) {
-    return this.handler.get(link)
+  getHash(url) {
+    const hash = this.handler.get(url)
+    return Short.withHash(url, hash)
+  }
+
+  isUrlRegistered(url) {
+    const res = this.handler.get(url)
+    return res !== null
   }
 }
 
-class HashRepo {
+export class HashRepo {
   constructor(handler) {
     this.handler = handler
   }
 
-  saveHash(url) {
-    const { link, hash } = url
-    this.handler.set(hash, link)
+  saveHash(shrt) {
+    const { url, hash } = shrt
+    this.handler.set(hash, url)
   }
 
-  getLink(hash) {
-    return this.handler.get(hash)
+  getUrl(hash) {
+    const url = this.handler.get(hash)
+    return Short.withHash(url, hash)
+  }
+
+  isHashRegistered(hash) {
+    const res = this.handler.get(hash)
+    return res !== null
+  }
+
+  getHashByIndex(index) {
+    const all = this.handler.keys()
+    const realIndex = index % all.length
+    return all[realIndex]
+  }
+
+  hashesCount() {
+    return this.handler.keys().length
   }
 }
