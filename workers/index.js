@@ -1,5 +1,10 @@
 import { Router } from 'itty-router'
-import { makeResponse, endpointHandler, notFoundWebsite } from './shrtnr/utils'
+import {
+  makeResponse,
+  endpointHandler,
+  notFoundWebsite,
+  handleOptions,
+} from './shrtnr/utils'
 import {
   imFeelingLuckyController,
   getFullUrlController,
@@ -32,5 +37,9 @@ router.post('/short', async request => {
 router.all('*', () => makeResponse('Method not allowed', 405))
 
 addEventListener('fetch', async e => {
-  e.respondWith(router.handle(e.request))
+  if (e.request.method === 'OPTIONS') {
+    e.respondWith(handleOptions(e.request))
+  } else {
+    e.respondWith(router.handle(e.request))
+  }
 })

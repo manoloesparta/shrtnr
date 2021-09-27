@@ -1,7 +1,13 @@
 export function makeResponse(text, status, ctype = 'application/json') {
   return new Response(text, {
     status: status,
-    headers: { 'Content-Type': ctype },
+    headers: { 
+      'Content-Type': ctype,
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,HEAD,POST,OPTIONS',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Max-Age': '86400',
+    },
   })
 }
 
@@ -30,3 +36,14 @@ export function randomInt(max) {
 export const notFoundWebsite = `
 <h1>Shortened link not found</h1>
 `
+
+export function handleOptions(request) {
+  return new Response(null, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,HEAD,POST,OPTIONS',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Max-Age': '86400',
+    },
+  })
+}

@@ -1,0 +1,42 @@
+body {
+    padding: 0px 20px;
+    margin: 24px auto;
+    max-width: 900px;
+    font-family: 'Roboto';
+    text-align: center;
+}
+
+h1 {
+    font-size: 150px;
+    margin-bottom: 0px;
+}
+
+.inputbox {
+    width: 100%;
+}
+
+input {
+    width: 99%;
+    font-size: 30px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.buttons {
+    font-size: 30px;
+    display: inline;
+}
+
+.buttons button {
+    font-size: 30px;
+    display: inline;
+}
+
+@media screen and (max-width: 470px) {
+    h1 {
+        font-size: 75px;
+        padding-top: 0px;
+    }
+}

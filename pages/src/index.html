@@ -5,8 +5,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shrtnr</title>
+  <link rel="stylesheet" href="https://unpkg.com/blocks.css/dist/blocks.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet"> 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.all.min.js"></script>
 </head>
 <body>
-    
+  <header>
+    <h1>🩳Shrtnr</h1>
+    <p>Anonymous URL shortening service for everyone</p>
+  </header>
+  <section>
+    <div class="fixed wrapper block inputbox">
+      <input id="url" type="text" placeholder="Paste any URL..." autocomplete="off">
+    </div>
+    <div class="buttons">
+      <button id="shorten" class="block">Shorten URL</button>
+      <button id="lucky" class="accent block">I'm feeling lucky</button>
+    </div>
+  </section>
 </body>
 </html>

@@ -1,7 +1,7 @@
 import { KVHandler } from './handlers'
 import { HashRepo, UrlsRepo } from './repos'
 import { Short } from './models'
-import { createRedirectHtml, randomInt } from './utils'
+import { randomInt } from './utils'
 
 const hashRepo = new HashRepo(new KVHandler(HASH_URL))
 const urlsRepo = new UrlsRepo(new KVHandler(URL_HASH))
@@ -46,5 +46,5 @@ export async function imFeelingLuckyController(request) {
   const shrt = await hashRepo.getUrl(hash)
 
   // Return associated redirect page
-  return shrt.toRedirectHtml()
+  return shrt.toJson()
 }
