@@ -12,12 +12,15 @@ h1 {
 }
 
 .inputbox {
-    width: 100%;
+    width: 90%;
+    text-align: left;
 }
 
 input {
     width: 99%;
     font-size: 30px;
+    border-width: 0px;
+    border:none;
 }
 
 input:focus {
@@ -38,5 +41,9 @@ input:focus {
     h1 {
         font-size: 75px;
         padding-top: 0px;
+    }
+
+    input {
+        width: 90%;
     }
 }

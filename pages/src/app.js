@@ -18,7 +18,13 @@ shortenButton.addEventListener('click', () => {
   fetch(`${API}/short`, options)
     .then(res => res.json())
     .catch(() => Swal.fire({ icon: 'error', title: 'Oops...', text: 'Did you check that site is up?'}))
-    .then(data => Swal.fire({ icon: 'success', title: 'Finally!', html: `Here is your shortened link (probably not): <br><strong>${API}/${data.hash}</strong>` }))
+    .then(data => {
+      if(data !== undefined) {
+        const htmlContent = `Here is your shortened link (probably not): <br><strong>${API}/${data.hash}</strong>`
+        Swal.fire({ icon: 'success', title: 'Finally!', html: htmlContent })
+      }
+    }
+  )
 })
 
 luckyButton.addEventListener('click', () => {
