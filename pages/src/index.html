@@ -5,9 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shrtnr</title>
-  <link rel="stylesheet" href="https://unpkg.com/blocks.css/dist/blocks.min.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet"> 
+  <link href="https://cdn.jsdelivr.net/npm/hint.css@2.6.0/hint.min.css" rel="stylesheet"> 
+  <link href="https://unpkg.com/blocks.css/dist/blocks.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.all.min.js"></script>
 </head>
 <body>
@@ -21,7 +22,9 @@
     </div>
     <div class="buttons">
       <button id="shorten" class="block">Shorten URL</button>
-      <button id="lucky" class="accent block">I'm feeling lucky</button>
+      <span class="hint--bottom" aria-label="Visit a random URL!">
+        <button id="lucky" class="accent block">I'm feeling lucky</button>
+      </span>
     </div>
   </section>
 </body>
