@@ -1,3 +1,5 @@
+![Shrtnr Logo](./logo.png)
+
 # Shrtnr
 
 > Another shortener but probably no
